@@ -13,10 +13,16 @@ def is_sorted(items):
 def bubble_sort(items):
     """Sort given items by swapping adjacent items that are out of order, and
     repeating until all items are in sorted order.
-    TODO: Running time: ??? Why and under what conditions?
-    TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Repeat until all items are in sorted order
-    # TODO: Swap adjacent items that are out of order
+    TODO: Running time: O(n) Why and under what conditions?
+    TODO: Memory usage: O(n) Why and under what conditions?"""
+    while not is_sorted(items):
+        for i in range(1,len(items)):
+            if items[i] < items[i-1]:
+                temp        = items[i]
+                items[i]    = items[i-1]
+                items[i-1]  = temp
+    return items
+            
 
 
 def selection_sort(items):
