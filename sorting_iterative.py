@@ -55,7 +55,7 @@ def insertion_sort(items):
         if items[i-1] > items[i]:
             while head > 0 and items[head-1] > items[head]:
                 temp          = items[head-1]
-                items[haed-1] = items[head]
+                items[head-1] = items[head]
                 items[head]   = temp
                 head         -= 1
 
