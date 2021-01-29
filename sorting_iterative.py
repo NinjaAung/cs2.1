@@ -1,7 +1,8 @@
 def is_sorted(items):
     """Return a boolean indicating whether given items are in sorted order.
-    TODO: Running time: O(n) Why and under what conditions?
-    TODO: Memory usage: O(n) Why and under what conditions?
+    Running time: O(n) Best case while running inside a single loop 
+
+    Memory usage: O(n) best case while holding the values of a list
     """
     if not len(items):
         return True
@@ -15,8 +16,11 @@ def is_sorted(items):
 def bubble_sort(items):
     """Sort given items by swapping adjacent items that are out of order, and
     repeating until all items are in sorted order.
-    TODO: Running time: O(n^2) Why and under what conditions?
-    TODO: Memory usage: O(n^2) Why and under what conditions?"""
+    Running time: O(n^2) Best Case under the assumption that items are no sorted and they are of nomral values and O(1) swaped
+
+    Memory usage: O(n^2) Best Case under the assumption that stored variables are set of only a list of items 
+    
+    """
     while not is_sorted(items):
         for i in range(1,len(items)):
             if items[i] < items[i-1]:
@@ -30,8 +34,10 @@ def bubble_sort(items):
 def selection_sort(items):
     """Sort given items by finding minimum item, swapping it with first
     unsorted item, and repeating until all items are in sorted order.
-    TODO: Running time: O(n^2) Why and under what conditions?
-    TODO: Memory usage: O(n^2) Why and under what conditions?"""
+    Running time: O(n^2) Best Case under the assumption that items are comapred and O(1) when swaped
+
+    Memory usage: O(n^2) Best Case when values are help in a double loop
+    """
     if is_sorted(items):
         return items
     for i in range(0,len(items)):
@@ -46,8 +52,9 @@ def selection_sort(items):
 def insertion_sort(items):
     """Sort given items by taking first unsorted item, inserting it in sorted
     order in front of items, and repeating until all items are in order.
-    TODO: Running time: O(n^2) Why and under what conditions?
-    TODO: Memory usage: O(n^2) Why and under what conditions?"""
+    Running time: O(n^2) Best Case when items are being sorted and swaped at O(1)
+    Memory usage: O(n^2) Best Case when holding normal list
+    """
     if is_sorted(items):
         return items
     for i in range(1,len(items)):
