@@ -16,7 +16,7 @@ def bubble_sort(items):
     """Sort given items by swapping adjacent items that are out of order, and
     repeating until all items are in sorted order.
     TODO: Running time: O(n^2) Why and under what conditions?
-    TODO: Memory usage: O(n) Why and under what conditions?"""
+    TODO: Memory usage: O(n^2) Why and under what conditions?"""
     while not is_sorted(items):
         for i in range(1,len(items)):
             if items[i] < items[i-1]:
@@ -31,7 +31,7 @@ def selection_sort(items):
     """Sort given items by finding minimum item, swapping it with first
     unsorted item, and repeating until all items are in sorted order.
     TODO: Running time: O(n^2) Why and under what conditions?
-    TODO: Memory usage: ??? Why and under what conditions?"""
+    TODO: Memory usage: O(n^2) Why and under what conditions?"""
     if is_sorted(items):
         return items
     for i in range(0,len(items)):
@@ -47,16 +47,16 @@ def insertion_sort(items):
     """Sort given items by taking first unsorted item, inserting it in sorted
     order in front of items, and repeating until all items are in order.
     TODO: Running time: O(n^2) Why and under what conditions?
-    TODO: Memory usage: ??? Why and under what conditions?"""
+    TODO: Memory usage: O(n^2) Why and under what conditions?"""
     if is_sorted(items):
         return items
     for i in range(1,len(items)):
-        sorted_index = i
+        head = i
         if items[i-1] > items[i]:
-            while sorted_index > 0 and items[sorted_index-1] > items[sorted_index]:
-                temp                  = items[sorted_index -1]
-                items[sorted_index-1] = items[sorted_index]
-                items[sorted_index]   = temp
-                sorted_index  -= 1
+            while head > 0 and items[head-1] > items[head]:
+                temp          = items[head-1]
+                items[haed-1] = items[head]
+                items[head]   = temp
+                head         -= 1
 
     return items
