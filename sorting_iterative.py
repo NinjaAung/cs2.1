@@ -4,7 +4,7 @@ def is_sorted(items):
 
     Memory usage: O(n) best case while holding the values of a list
     """
-    if not len(items):
+    if len(items) <= 1:
         return True
     for i in range(1,len(items)):
         if items[i] < items[i-1]:
