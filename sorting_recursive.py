@@ -41,6 +41,40 @@ def merge_sort(items):
     # TODO: Sort each half by recursively calling merge sort
     # TODO: Merge sorted halves into one list in sorted order
 
+    if len(items) & 1:
+        print("Len of items is not even")
+        return
+
+    if len(items) > 1:
+        mid = len(items)//2
+
+        left_sub = items[:mid]
+        right_sub = items[mid:]
+
+        merge_sort(left_sub)
+        merge_sort(right_sub)
+
+        i = j = k = 0
+
+        while i < len(left_sub) and j < len(right_sub):
+            if left_sub[i] < right_sub[j]:
+                items[k] = left_sub[i]
+                i += 1
+            else:
+                items[k] = right_sub[j]
+                j += 1
+            k += 1
+
+        while i < len(right_sub):
+            items[k] = left_sub[i]
+            i += 1
+            k += 1
+
+        while j < len(right_sub):
+            items[k] = right_sub[j]
+            j += 1
+            k += 1
+
 
 def partition(items, low, high):
     """Return index `p` after in-place partitioning given items in range
@@ -49,11 +83,18 @@ def partition(items, low, high):
     `[low...p-1]`, and items greater than pivot into range `[p+1...high]`.
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Choose a pivot any way and document your method in docstring above
-    # TODO: Loop through all items in range [low...high]
-    # TODO: Move items less than pivot into front of range [low...p-1]
-    # TODO: Move items greater than pivot into back of range [p+1...high]
-    # TODO: Move pivot item into final position [p] and return index p
+    i = (low-1)
+    pivot = items[high]
+
+    for j in range(low, high):
+
+        if items[j] <= pivot:
+
+            i = i+1
+            items[i], items[j] = items[j], items[i]
+
+    items[i+1], items[high] = items[high], items[i+1]
+    return (i+1)
 
 
 def quick_sort(items, low=None, high=None):
@@ -62,7 +103,16 @@ def quick_sort(items, low=None, high=None):
     TODO: Best case running time: ??? Why and under what conditions?
     TODO: Worst case running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Check if high and low range bounds have default values (not given)
-    # TODO: Check if list or range is so small it's already sorted (base case)
-    # TODO: Partition items in-place around a pivot and get index of pivot
-    # TODO: Sort each sublist range by recursively calling quick sort
+    if low is None:
+        return quick_sort(items,0,high)
+
+    if high is None:
+        return quick_sort(items,low,len(items)-1)
+    if len(items) == 1:
+        return items
+    if low < high:
+        partioned_i = partition(items, low, high)
+
+        quick_sort(items, low, partioned_i-1)
+        quick_sort(items, partioned_i+1, high)
+
